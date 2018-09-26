@@ -29,8 +29,26 @@
 		4B66C83C2149A31E00961791 /* HouseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B66C83A2149A31E00961791 /* HouseDetailViewController.xib */; };
 		4B88F82D2149B9F10062C3AA /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B88F82C2149B9F10062C3AA /* UIViewController+Navigation.swift */; };
 		4B88F82F2149BBF20062C3AA /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B88F82E2149BBF20062C3AA /* RepositoryTests.swift */; };
-		4B88F8322149BCBB0062C3AA /* Respository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B88F8312149BCBB0062C3AA /* Respository.swift */; };
 		4BCE76C72152DACB00EF4D45 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCE76C62152DACB00EF4D45 /* Notification+Name.swift */; };
+		74D37FC12158139600786403 /* SeasonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D37FC02158139600786403 /* SeasonTest.swift */; };
+		74D37FC3215813EA00786403 /* EpisodesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D37FC2215813EA00786403 /* EpisodesTest.swift */; };
+		74D37FC52158144900786403 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D37FC42158144900786403 /* Episode.swift */; };
+		74D37FC7215814A300786403 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D37FC6215814A300786403 /* Season.swift */; };
+		74D37FC82159874B00786403 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D37FC42158144900786403 /* Episode.swift */; };
+		74D37FC92159875300786403 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D37FC6215814A300786403 /* Season.swift */; };
+		74D37FCA215BE57500786403 /* Respository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B88F8312149BCBB0062C3AA /* Respository.swift */; };
+		74D37FCB215BE65D00786403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2650CF2141B36600369C82 /* AppDelegate.swift */; };
+		74D37FCC215BE69800786403 /* Respository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B88F8312149BCBB0062C3AA /* Respository.swift */; };
+		74D37FCD215BE7EB00786403 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2650F22141BD9300369C82 /* House.swift */; };
+		74D37FCE215BE81900786403 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2650F82141C91100369C82 /* Person.swift */; };
+		74D37FCF215BE81D00786403 /* Sigil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2650F42141C21800369C82 /* Sigil.swift */; };
+		74D37FD0215BE85E00786403 /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B88F82C2149B9F10062C3AA /* UIViewController+Navigation.swift */; };
+		74D37FD1215BE86100786403 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCE76C62152DACB00EF4D45 /* Notification+Name.swift */; };
+		74D37FD2215BE86900786403 /* HouseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B422D67215059D000B44286 /* HouseListViewController.swift */; };
+		74D37FD3215BE86E00786403 /* HouseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66C8392149A31E00961791 /* HouseDetailViewController.swift */; };
+		74D37FD4215BE87200786403 /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B422D632150336A00B44286 /* WikiViewController.swift */; };
+		74D37FD5215BE87500786403 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B422D6B215189A300B44286 /* MemberListViewController.swift */; };
+		74D37FD6215BE88F00786403 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B422D6F2151A85D00B44286 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +90,10 @@
 		4B88F82E2149BBF20062C3AA /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
 		4B88F8312149BCBB0062C3AA /* Respository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Respository.swift; sourceTree = "<group>"; };
 		4BCE76C62152DACB00EF4D45 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
+		74D37FC02158139600786403 /* SeasonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTest.swift; sourceTree = "<group>"; };
+		74D37FC2215813EA00786403 /* EpisodesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesTest.swift; sourceTree = "<group>"; };
+		74D37FC42158144900786403 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		74D37FC6215814A300786403 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +155,8 @@
 				4B2650EF2141BBE300369C82 /* HouseTests.swift */,
 				4B2650F62141C8C400369C82 /* PersonTests.swift */,
 				4B88F82E2149BBF20062C3AA /* RepositoryTests.swift */,
+				74D37FC02158139600786403 /* SeasonTest.swift */,
+				74D37FC2215813EA00786403 /* EpisodesTest.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -144,6 +168,8 @@
 				4B2650F22141BD9300369C82 /* House.swift */,
 				4B2650F42141C21800369C82 /* Sigil.swift */,
 				4B2650F82141C91100369C82 /* Person.swift */,
+				74D37FC42158144900786403 /* Episode.swift */,
+				74D37FC6215814A300786403 /* Season.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -234,6 +260,10 @@
 		4B2650C42141B36500369C82 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+					"New-1",
+				);
 				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Alexandre Freire";
@@ -301,14 +331,16 @@
 				4B88F82D2149B9F10062C3AA /* UIViewController+Navigation.swift in Sources */,
 				4B422D702151A85D00B44286 /* Constants.swift in Sources */,
 				4B66C83B2149A31E00961791 /* HouseDetailViewController.swift in Sources */,
-				4B88F8322149BCBB0062C3AA /* Respository.swift in Sources */,
 				4B2650F52141C21800369C82 /* Sigil.swift in Sources */,
 				4BCE76C72152DACB00EF4D45 /* Notification+Name.swift in Sources */,
 				4B422D6D215189A300B44286 /* MemberListViewController.swift in Sources */,
+				74D37FC52158144900786403 /* Episode.swift in Sources */,
 				4B2650F32141BD9300369C82 /* House.swift in Sources */,
 				4B2650D02141B36600369C82 /* AppDelegate.swift in Sources */,
+				74D37FCC215BE69800786403 /* Respository.swift in Sources */,
 				4B422D652150336A00B44286 /* WikiViewController.swift in Sources */,
 				4B2650F92141C91100369C82 /* Person.swift in Sources */,
+				74D37FC7215814A300786403 /* Season.swift in Sources */,
 				4B422D69215059D000B44286 /* HouseListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,9 +349,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D37FD3215BE86E00786403 /* HouseDetailViewController.swift in Sources */,
+				74D37FD6215BE88F00786403 /* Constants.swift in Sources */,
+				74D37FC3215813EA00786403 /* EpisodesTest.swift in Sources */,
+				74D37FC82159874B00786403 /* Episode.swift in Sources */,
+				74D37FD2215BE86900786403 /* HouseListViewController.swift in Sources */,
+				74D37FD4215BE87200786403 /* WikiViewController.swift in Sources */,
+				74D37FC12158139600786403 /* SeasonTest.swift in Sources */,
+				74D37FCB215BE65D00786403 /* AppDelegate.swift in Sources */,
+				74D37FCE215BE81900786403 /* Person.swift in Sources */,
+				74D37FD5215BE87500786403 /* MemberListViewController.swift in Sources */,
 				4B2650F02141BBE300369C82 /* HouseTests.swift in Sources */,
+				74D37FCF215BE81D00786403 /* Sigil.swift in Sources */,
 				4B2650F72141C8C400369C82 /* PersonTests.swift in Sources */,
+				74D37FC92159875300786403 /* Season.swift in Sources */,
 				4B88F82F2149BBF20062C3AA /* RepositoryTests.swift in Sources */,
+				74D37FCD215BE7EB00786403 /* House.swift in Sources */,
+				74D37FD1215BE86100786403 /* Notification+Name.swift in Sources */,
+				74D37FD0215BE85E00786403 /* UIViewController+Navigation.swift in Sources */,
+				74D37FCA215BE57500786403 /* Respository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +555,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WesterosTests/Info.plist;

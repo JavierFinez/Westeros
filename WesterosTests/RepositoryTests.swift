@@ -11,9 +11,11 @@ import XCTest
 class RepositoryTests: XCTestCase {
 
     var localHouses: [House]!
+    var localSeasons: [Season]!
     
     override func setUp() {
         localHouses = Repository.local.houses
+        localSeasons = Repository.local.seasons
     }
 
     override func tearDown() {
@@ -50,4 +52,13 @@ class RepositoryTests: XCTestCase {
         filtered = Repository.local.houses { $0.count == 100 }
         XCTAssertTrue(filtered.isEmpty)
     }
+    
+    func testLocalRepositorySeasonFiltering() {
+        let filtered = Repository.local.seasons { $0.count == 2 }
+        XCTAssertEqual(filtered.count, 7)
+        
+        let filtered2 = Repository.local.seasons { $0.count == 100000 }
+        XCTAssertTrue(filtered2.isEmpty)
+    }
+
 }
