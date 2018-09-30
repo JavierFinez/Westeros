@@ -40,6 +40,5 @@ class MemberDetailViewController: UIViewController {
         nameLabel.text = self.model.name
         houseLabel.text = "Casa \(self.model.house.name)"
         aliasLabel.text = self.model.alias
-        //photoImage.image = self.model.photo
     }
 }
