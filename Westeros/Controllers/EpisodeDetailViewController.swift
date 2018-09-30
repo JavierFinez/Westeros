@@ -45,8 +45,6 @@ class EpisodeDetailViewController: UIViewController {
     func syncModelWithView() {
         self.title = self.model.title
         titleLabel.text = self.model.title
-        //numberLabel.text = "Episode \(self.model.number)"
-        //dateLabel.text = model.airDateToString
-        //excerptText.text = model.excerpt
+
     }
 }
