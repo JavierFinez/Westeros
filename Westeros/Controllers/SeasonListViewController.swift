@@ -1,29 +1,28 @@
 //
-//  HouseListViewController.swift
+//  SeasonListViewController.swift
 //  Westeros
 //
-//  Created by Javier Finez on 20/09/2018.
+//  Created by Javier Finez de Dios on 26/9/18.
 //
 
 import UIKit
 
-protocol HouseListViewControllerDelegate {
+protocol SeasonListViewControllerDelegate {
     // Should
     // Will
     // Did
     // Convencion: El primer parametro de las funciones del delegate es SIEMPRE el objeto
-    func houseListViewController(_ vc: HouseListViewController, didSelectHouse house: House)
+    func seasonListViewController(_ vc: SeasonListViewController, didSelectSeason season: Season)
 }
 
+class SeasonListViewController: UITableViewController {
 
-class HouseListViewController: UITableViewController {
-    
     // Mark: - Properties
-    let model: [House]
-    var delegate: HouseListViewControllerDelegate?
+    let model: [Season]
+    var delegate: SeasonListViewControllerDelegate?
     
     // Mark: - Initialization
-    init(model: [House]) {
+    init(model: [Season]) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
         title = "Westeros"
@@ -37,18 +36,17 @@ class HouseListViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellId = "HouseCell"
+        let cellId = "SeasonCell"
         
         // Descubir el item (casa) que tenemos que mostrar
-        let house = model[indexPath.row]
+        let season = model[indexPath.row]
         
         // Crear una celda (o que nos la den del caché)
         var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
@@ -57,8 +55,7 @@ class HouseListViewController: UITableViewController {
         }
         
         // Sincronizar celda (view) y casa (model)
-        cell?.imageView?.image = house.sigil.image
-        cell?.textLabel?.text = house.name
+        cell?.textLabel?.text  = season.name
         
         // Devolver la celda
         return cell!
@@ -70,51 +67,52 @@ class HouseListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Averiguar la casa en cuestion
-        let theHouse = house(at: indexPath.row)
+        // Averiguar la temporada en cuestion
+        let theSeason = season(at: indexPath.row)
         
         // SIEMPRE emitir la informacion a traves de los dos metodos: delegates y notifications
         // Avisar/Informar al delegado
-        delegate?.houseListViewController(self, didSelectHouse: theHouse)
+        delegate?.seasonListViewController(self, didSelectSeason: theSeason)
         
         // Enviar una notificacion
         let nc = NotificationCenter.default
-        let notification = Notification(name: .houseDidChangeNotification, object: self,
-                                        userInfo: [Constants.houseKey : theHouse])
+        let notification = Notification(name: .seasonDidChangeNotification, object: self,
+                                        userInfo: [Constants.seasonKey : theSeason])
         nc.post(notification)
         
-        // Guardamos la ultima casa seleccionada
-        saveLastSelectedHouse(at: indexPath.row)
+        // Guardamos la ultima temporada seleccionada
+        saveLastSelectedSeason(at: indexPath.row)
     }
+    
 }
 
 // MARK: - Persistence (UserDefauls) Solo sirve para persistir PEQUENAS cantidades de objetos
 // Los objectos tiene que ser sencillos: String, Int, Array, ...
-extension HouseListViewController {
-    func saveLastSelectedHouse(at row: Int) {
-        // Aqui vamos a guardar la ultima casa seleccionada
+extension SeasonListViewController {
+    func saveLastSelectedSeason(at row: Int) {
+        // Aqui vamos a guardar la ultima temporada seleccionada
         let userDefaults = UserDefaults.standard
         
         // Lo insertamos en el diccionario de User Defaults
-        userDefaults.set(row, forKey: Constants.lastHouseKey)
+        userDefaults.set(row, forKey: Constants.lastSeasonKey)
         
         // Guardar
         userDefaults.synchronize() // Por si acaso
     }
     
-    func lastSelectedHouse() -> House {
+    func lastSelectedSeason() -> Season {
         // Averiguar cual es la ultima row seleccionada (si la hay)
-        let row = UserDefaults.standard.integer(forKey: Constants.lastHouseKey) // Value 0 es el default
-        return house(at: row)
+        let row = UserDefaults.standard.integer(forKey: Constants.lastSeasonKey) // Value 0 es el default
+        return season(at: row)
     }
     
-    func house(at index: Int) -> House {
+    func season(at index: Int) -> Season {
         return model[index]
     }
 }
 
-extension HouseListViewController: HouseListViewControllerDelegate {
-    func houseListViewController(_ vc: HouseListViewController, didSelectHouse house: House) {
-        navigationController?.pushViewController(HouseDetailViewController(model: house), animated: true)
+extension SeasonListViewController: SeasonListViewControllerDelegate {
+    func seasonListViewController(_ vc: SeasonListViewController, didSelectSeason season: Season) {
+        navigationController?.pushViewController(SeasonDetailViewController(model: season), animated: true)
     }
 }

@@ -8,10 +8,13 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
 
     var window: UIWindow?
 
+    var houseDetailWrapped: UINavigationController!
+    var seasonDetailWrapped: UINavigationController!
+    var splitViewController: UISplitViewController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -20,32 +23,83 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 1. Creamos el modelo
         let houses = Repository.local.houses
+        let seasons = Repository.local.seasons
         
         // Crear los controladores
         // Master
         let houseListViewController = HouseListViewController(model: houses)
         let lastHouseSelected = houseListViewController.lastSelectedHouse()
-        
         // Detail
         let houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
+        houseDetailWrapped = houseDetailViewController.wrappedInNavigation()
+        
+    
+        let seasonListViewController = SeasonListViewController(model: seasons)
+        let lastSeasonSelected = seasonListViewController.lastSelectedSeason()
+        let seasonDetailViewController = SeasonDetailViewController(model: lastSeasonSelected)
+        seasonDetailWrapped = seasonDetailViewController.wrappedInNavigation()
         
         // Asignar delegados
         // Un objeto SOLO puede tener un delegado
         // Sin embargo, un objeto, SI puede ser delegado de varios otros
-        houseListViewController.delegate = houseDetailViewController
+        //houseListViewController.delegate = houseDetailViewController
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+            houseListViewController.delegate = houseDetailViewController
+            seasonListViewController.delegate = seasonDetailViewController
+        } else {
+            houseListViewController.delegate = houseListViewController
+            seasonListViewController.delegate = seasonListViewController
+        }
+        
+        // TabBar
+        let houseListWrapped = houseListViewController.wrappedInNavigation()
+        let seasonListWrapped = seasonListViewController.wrappedInNavigation()
+        
+        houseListWrapped.tabBarItem.title = "House"
+         seasonListWrapped.tabBarItem.title = "Seasons"
+        
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [
+            houseListWrapped,
+            seasonListWrapped
+        ]
+        tabBar.delegate = self
+        tabBar.tabBar.backgroundColor = UIColor.darkGray
         
         // Crear el combinador, osea, el UISplitVC
         let splitViewController = UISplitViewController()
         splitViewController.viewControllers = [
-            houseListViewController.wrappedInNavigation(),
-            houseDetailViewController.wrappedInNavigation()
+            tabBar,
+            houseDetailWrapped
         ]
         
-        // Asignamos el rootVC
+        // Asignamos el rootViewController
         window?.rootViewController = splitViewController
         
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+            if let navController = viewController as? UINavigationController {
+                let typeOfController = type(of: navController.viewControllers.first!)
+                var detailController: UINavigationController
+                
+                switch (typeOfController) {
+                case is HouseListViewController.Type:
+                    detailController = houseDetailWrapped
+                    
+                case is SeasonListViewController.Type:
+                    detailController = seasonDetailWrapped
+                    
+                default:
+                    NSLog("Unknown controller \(typeOfController)")
+                    detailController = UINavigationController()
+                }
+                splitViewController.showDetailViewController(detailController, sender: self)
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

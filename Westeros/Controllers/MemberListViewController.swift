@@ -20,6 +20,7 @@ class MemberListViewController: UIViewController {
         self.model = model
         
         super.init(nibName: nil, bundle: nil)
+        self.title = "Members"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,6 +32,7 @@ class MemberListViewController: UIViewController {
         super.viewDidLoad()
         // FUNDAMENTAL!!! No olvidarse de contar al tableview quienes son sus ayudantes (datasource y delegate)
         tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
@@ -44,7 +46,7 @@ extension MemberListViewController: UITableViewDataSource {
         let cellId = "PersonCell"
         
         // Descubrimos cual es la Person que hay que mostrar
-        let person = model[indexPath.row]
+        let personInstance = member(at: indexPath.row)
         
         // Creamos la celda (o nos la dan de cache)
         var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
@@ -53,9 +55,26 @@ extension MemberListViewController: UITableViewDataSource {
         }
         
         // Sincronizar modelo-vista (person-cell)
-        cell?.textLabel?.text = person.name
-        cell?.detailTextLabel?.text = person.alias
+        cell?.textLabel?.text = personInstance.name
+        cell?.detailTextLabel?.text = personInstance.alias
 
         return cell!
+    }
+}
+
+extension MemberListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let memberInstance = member(at: indexPath.row)
+        navigationController?.pushViewController(MemberDetailViewController(model: memberInstance), animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+}
+
+extension MemberListViewController {
+    func member(at row: Int) -> Person {
+        return model[row]
     }
 }

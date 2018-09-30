@@ -60,5 +60,19 @@ class RepositoryTests: XCTestCase {
         let filtered2 = Repository.local.seasons { $0.count == 100000 }
         XCTAssertTrue(filtered2.isEmpty)
     }
+    
+    func testLocalRepositoryReturnsHouseByNameEnum() {
+        let stark = Repository.local.house(named: .Stark)
+        XCTAssertEqual(stark?.name, "Stark")
+        
+        let lannister = Repository.local.house(named: .Lannister)
+        XCTAssertEqual(lannister?.name, "Lannister")
+        
+        let targaryen = Repository.local.house(named: .Targaryen)
+        XCTAssertNotEqual(targaryen?.name, "Lannister")
+        
+        let swift = Repository.local.house(named: "Swift")
+        XCTAssertNil(swift)
+    }
 
 }

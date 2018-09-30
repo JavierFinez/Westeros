@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class Repository {
     static let local = LocalFactory()
 }
@@ -65,13 +64,23 @@ final class LocalFactory: HouseFactory {
     }
     
     func house(named name: String) -> House? {
-//        return houses.filter { $0.name.uppercased() == name.uppercased() }.first
-        return houses.first { $0.name.uppercased() == name.uppercased() } 
+        return houses.first { $0.name.uppercased() == name.uppercased() }
     }
     
     func houses(filteredBy: Filter) -> [House] {
         return houses.filter(filteredBy)
     }
+    
+    enum Houses: String {
+        case Stark = "Stark"
+        case Lannister = "Lannister"
+        case Targaryen = "Targaryen"
+    }
+    
+    func house(named enumHouse: Houses) -> House? {
+        return house(named: enumHouse.rawValue)
+    }
+    
 }
 
 extension LocalFactory: SeasonFactory{
